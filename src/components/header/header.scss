@@ -1,16 +1,24 @@
 .header {
   display: flex;
+  justify-content: space-between;
   height: 60px;
   padding: 0 48px;
   align-items: center;
 }
 
 .create-event-btn {
+  color: #ffffff;
   padding: 0 16px;
+  background: linear-gradient(black, #e20000);
 
   &__icon {
     margin-right: 8px;
   }
+}
+
+.navigation__today-btn {
+  position: relative;
+  background: linear-gradient(#2b8eff, #fff34c);
 }
 
 .navigation {
@@ -27,4 +35,14 @@
   &__displayed-month {
     margin-left: 10px;
   }
+}
+
+.fa-chevron-left:hover {
+  transform: scale(150%);
+  color: #e20000;
+}
+
+.fa-chevron-right:hover {
+  transform: scale(150%);
+  color: #2b8eff;
 }

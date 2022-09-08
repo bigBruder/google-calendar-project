@@ -1,27 +1,53 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 
-import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
+import {
+  getWeekStartDate,
+  generateWeekRange,
+  nextWeek,
+  previousWeek,
+  months,
+} from '../src/utils/dateUtils.js';
 
 import './common.scss';
 
-class App extends Component {
-  state = {
+const App = () => {
+  const [state, setState] = useState({
     weekStartDate: new Date(),
+  });
+  const previousWeekDates = () => {
+    setState({
+      weekStartDate: new Date(previousWeek(weekStartDate)),
+    });
   };
 
-  render() {
-    const { weekStartDate } = this.state;
-    const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
+  const nextWeekDates = () => {
+    setState({
+      weekStartDate: new Date(nextWeek(weekStartDate)),
+    });
+  };
 
-    return (
-      <>
-        <Header />
-        <Calendar weekDates={weekDates} />
-      </>
-    );
-  }
-}
+  const currentWeekDates = () => {
+    setState({
+      weekStartDate: new Date(),
+    });
+  };
+
+  const { weekStartDate } = state;
+  const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
+
+  return (
+    <>
+      <Header
+        currentMonth={months[weekStartDate.getMonth()]}
+        switchOnToday={currentWeekDates}
+        switchOnNextWeek={nextWeekDates}
+        switchOnPreviousWeek={previousWeekDates}
+      />
+      <Calendar weekDates={weekDates} />
+    </>
+  );
+};
 
 export default App;

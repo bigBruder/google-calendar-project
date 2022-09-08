@@ -10,6 +10,18 @@ export const getWeekStartDate = date => {
   return new Date(monday.getFullYear(), monday.getMonth(), monday.getDate());
 };
 
+export const previousWeek = currentTime => {
+  const dateCopy = currentTime;
+  const monday = new Date(dateCopy.setDate(currentTime.getDate() - 7));
+  return new Date(monday.getFullYear(), monday.getMonth(), monday.getDate());
+};
+
+export const nextWeek = currentTime => {
+  const dateCopy = currentTime;
+  const monday = new Date(dateCopy.setDate(currentTime.getDate() + 7));
+  return new Date(monday.getFullYear(), monday.getMonth(), monday.getDate());
+};
+
 export const generateWeekRange = startDate => {
   const result = [];
   for (let i = 0; i < 7; i += 1) {
