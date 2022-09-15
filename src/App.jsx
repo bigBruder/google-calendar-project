@@ -18,16 +18,6 @@ const App = () => {
     events: [],
   });
 
-  const fetchEvents = () => {
-    fetchEventList().then(eventsList =>
-      setState({
-        weekStartDate,
-        formVisibility: false,
-        events: eventsList,
-      }),
-    );
-  };
-
   const { weekStartDate, formVisibility, events } = state;
 
   const previousWeekDates = () => {
@@ -61,6 +51,16 @@ const App = () => {
   const showForm = e => {
     e.preventDefault();
     setState({ formVisibility: true, weekStartDate, events });
+  };
+
+  const fetchEvents = () => {
+    fetchEventList().then(eventsList =>
+      setState({
+        weekStartDate,
+        formVisibility: false,
+        events: eventsList,
+      }),
+    );
   };
 
   const handleSubmit = (date, startTime, endTime, title) => {
