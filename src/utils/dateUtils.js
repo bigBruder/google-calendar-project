@@ -31,6 +31,29 @@ export const generateWeekRange = startDate => {
   return result;
 };
 
+export const countEventDates = (date, startTime, endTime) => {
+  const dateParts = date.split('-');
+  const startTimeParts = startTime.split(':');
+  const endTimeParts = endTime.split(':');
+
+  const dateFrom = new Date(
+    dateParts[0],
+    dateParts[1] - 1,
+    dateParts[2],
+    startTimeParts[0],
+    startTimeParts[1],
+  );
+
+  const dateTo = new Date(
+    dateParts[0],
+    dateParts[1] - 1,
+    dateParts[2],
+    endTimeParts[0],
+    endTimeParts[1],
+  );
+  return { dateFrom: dateFrom, dateTo: dateTo };
+};
+
 export const getDateTime = (date, time) => {
   const [hours, minutes] = time.split(':');
   const withHours = new Date(new Date(date).setHours(Number(hours)));
@@ -41,6 +64,8 @@ export const getDateTime = (date, time) => {
 export const formatMins = mins => {
   return mins < 10 ? `0${mins}` : mins;
 };
+
+export const countMinutes = () => new Date().getHours() * 60 + new Date().getMinutes();
 
 export const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 export const months = [
@@ -57,3 +82,11 @@ export const months = [
   'November',
   'December',
 ];
+
+export const currentMonth = (weekDates, weekStartDate) => {
+  const firstmonth = months[weekDates[1].getMonth()].slice(0, 3);
+  const secondmonth = months[weekDates[6].getMonth()].slice(0, 3);
+  return weekDates[0].getMonth() === weekDates[6].getMonth()
+    ? months[weekStartDate.getMonth()]
+    : `${firstmonth} - ${secondmonth}`;
+};

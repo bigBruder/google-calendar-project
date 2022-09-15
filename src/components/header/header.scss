@@ -11,6 +11,11 @@
   padding: 0 16px;
   background: linear-gradient(black, #e20000);
 
+  &:active {
+    background-color: #333;
+    border-color: #2b8eff;
+    color: #fff34c;
+  }
   &__icon {
     margin-right: 8px;
   }
@@ -19,6 +24,9 @@
 .navigation__today-btn {
   position: relative;
   background: linear-gradient(#2b8eff, #fff34c);
+  &:hover {
+    color: #ffffff;
+  }
 }
 
 .navigation {

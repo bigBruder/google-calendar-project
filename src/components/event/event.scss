@@ -15,13 +15,23 @@
     margin-bottom: 8px;
   }
 
+  &__deleteBtn {
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      font-weight: bold;
+      color: #ff0000;
+    }
+  }
+
   &:hover {
     font-weight: bold;
-    background-color: red;
+    background-color: blue;
   }
-}
-
-.delete-event-btn {
-  cursor: pointer;
-  border: none;
 }
