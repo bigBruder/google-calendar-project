@@ -1,6 +1,6 @@
 # google-calendar-project
 
-### https://teal-nasturtium-b9d273.netlify.app
+### https://magnificent-haupia-2883a4.netlify.app/
 
 ### The tech stack is:
 
