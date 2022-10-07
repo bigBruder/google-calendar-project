@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Hour from '../hour/Hour';
 import { countMinutes } from '../../../src/utils/dateUtils.js';
 
@@ -49,6 +50,12 @@ const Day = ({ dataDay, dayEvents, deleteEvent }) => {
       ) : null} */}
     </div>
   );
+};
+
+Day.propTypes = {
+  dataDay: PropTypes.number,
+  dayEvents: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  deleteEvent: PropTypes.func.isRequired,
 };
 
 export default Day;

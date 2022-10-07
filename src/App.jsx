@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import { createEvent, deleteEvent, fetchEventList } from './gateway/gateway';
@@ -94,12 +93,6 @@ const App = () => {
       />
     </>
   );
-};
-
-App.PropTypes = {
-  weekStartDate: PropTypes.string.isRequired,
-  events: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  formVisibility: PropTypes.bool.isRequired,
 };
 
 export default App;

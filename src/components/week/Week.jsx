@@ -1,7 +1,7 @@
 import React from 'react';
-import Day from '../day/Day';
-
+import PropTypes from 'prop-types';
 import './week.scss';
+import Day from '../day/Day';
 
 const Week = ({ weekDates, events, deleteEvent }) => {
   return (
@@ -9,11 +9,9 @@ const Week = ({ weekDates, events, deleteEvent }) => {
       {weekDates.map(dayStart => {
         const dayEnd = new Date(dayStart.getTime()).setHours(dayStart.getHours() + 23, 59);
         //getting all events from the day we will render
-        const dayEvents = events.filter(event => {
-          // console.log(new Date(event.dateFrom.setMonth(event.dateFrom.getMonth() - 1)));
-          // console.log(event.dateTo);
-          return event.dateFrom > dayStart && event.dateTo < dayEnd;
-        });
+        const dayEvents = events.filter(
+          event => event.dateFrom > dayStart && event.dateTo < dayEnd,
+        );
 
         return (
           <Day
@@ -26,6 +24,12 @@ const Week = ({ weekDates, events, deleteEvent }) => {
       })}
     </div>
   );
+};
+
+Week.propTypes = {
+  weekDates: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  events: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  deleteEvent: PropTypes.func.isRequired,
 };
 
 export default Week;

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import './modal.scss';
 import moment from 'moment';
 
@@ -85,6 +87,15 @@ const Modal = props => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  weekDates: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  events: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  formVisibility: PropTypes.bool.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  closeForm: PropTypes.func.isRequired,
+  deleteEvent: PropTypes.func.isRequired,
 };
 
 export default Modal;

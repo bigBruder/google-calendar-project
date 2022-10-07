@@ -4,7 +4,7 @@ const events = [];
 
 export default events;
 
-const baseUrl = 'https://631bb8e04fa7d3264ca0d25d.mockapi.io/events';
+const baseUrl = 'https://633aae56471b8c3955724549.mockapi.io/api/v1//events';
 
 export const createEvent = taskData =>
   fetch(baseUrl, {
